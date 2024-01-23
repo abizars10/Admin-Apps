@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Formulir -->
+    <form id="dataForm">
+      <table border="1">
+        <thead>
+          <tr>
+            <td>Masukan Data</td>
+            <td><button type="button" id="tambahDataButton">Tambah Data</button></td>
+          </tr>
+        </thead>
+        <tr>
+          <td>
+            <label for="id">ID</label>
+          </td>
+          <td><input type="text" id="id" name="id" required /><br /></td>
+        </tr>
+        <tr>
+          <td>
+            <label for="nama">Nama</label>
+          </td>
+          <td><input type="text" id="nama" name="nama" required /><br /></td>
+        </tr>
+        <tr>
+          <td>
+            <label for="nominal">Nominal</label>
+          </td>
+          <td><input type="text" id="nominal" name="nominal" required /><br /></td>
+        </tr>
+        <tr>
+          <td>
+            <label for="jenis">Jenis</label>
+          </td>
+          <td>
+            <select id="jenis" name="jenis" required>
+              <option value="Debit">Debit</option>
+              <option value="Kredit">Kredit</option></select
+            ><br />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="tanggal">Tanggal</label>
+          </td>
+          <td><input type="text" id="tanggal" name="tanggal" required /><br /></td>
+        </tr>
+      </table>
+    </form>
+
+    <!-- Table Transaksi -->
+    <table border="1">
+      <thead>
+        <tr>
+          <td colspan="5">Table Transaksi</td>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>Nominal</td>
+          <td>Jenis</td>
+          <td>Tanggal</td>
+          <td>Aksi</td>
+        </tr>
+      </thead>
+      <tbody id="transaksi"></tbody>
+    </table>
+
+    <!-- Table Saldo -->
+    <table border="1">
+      <thead>
+        <tr>
+          <td colspan="3">Table Saldo</td>
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>Nama</td>
+          <td>Saldo</td>
+        </tr>
+      </thead>
+      <tbody id="saldo"></tbody>
+    </table>
+
+    <!-- Include file client.js -->
+    <script src="/client.js"></script>
+  </body>
+</html>
