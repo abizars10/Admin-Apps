@@ -124,13 +124,22 @@ document.addEventListener("DOMContentLoaded", function () {
     // Hapus data dari tabel transaksi
     const indexTransaksi = Array.from(transaksiTable.rows).findIndex((row) => row.cells[0].textContent === id);
     if (indexTransaksi !== -1) {
-      transaksiTable.deleteRow(indexTransaksi);
-    }
+      const deletedRowTransaksi = transaksiTable.rows[indexTransaksi];
+      const deletedData = {
+        id: deletedRowTransaksi.cells[0].textContent,
+        nominal: deletedRowTransaksi.cells[1].textContent,
+        jenis: deletedRowTransaksi.cells[2].textContent,
+      };
 
-    // Hapus data dari tabel saldo
-    const indexSaldo = Array.from(saldoTable.rows).findIndex((row) => row.cells[0].textContent === id);
-    if (indexSaldo !== -1) {
-      saldoTable.deleteRow(indexSaldo);
+      transaksiTable.deleteRow(indexTransaksi);
+
+      // Perbarui atau kurangi saldo pada tabel saldo
+      const existingRowSaldo = Array.from(saldoTable.rows).find((row) => row.cells[0].textContent === id);
+      if (existingRowSaldo) {
+        const existingSaldo = parseInt(existingRowSaldo.cells[2].textContent);
+        const updatedSaldo = deletedData.jenis === "Debit" ? existingSaldo - parseInt(deletedData.nominal) : existingSaldo + parseInt(deletedData.nominal);
+        existingRowSaldo.cells[2].textContent = updatedSaldo;
+      }
     }
   }
 
